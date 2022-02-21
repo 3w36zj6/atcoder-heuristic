@@ -1,0 +1,7 @@
+.vscode/
+myenv/
+/*/*/
+*.html
+*.txt
+*.exe
+*.md
