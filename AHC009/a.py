@@ -1,5 +1,7 @@
 from decimal import Decimal
 
+import random
+
 from heapq import heappop, heappush
 
 def dijkstra(graph, start):
@@ -56,17 +58,22 @@ while directions[-1] != 20*S_I+S_J:
 directions_ij = [(d//20, d%20) for d in directions[::-1]]
 
 
-answer = ""
+
+answer = []
 
 takahashi_position = [S_I, S_J]
 
 for turn in range(200):
-    pass
-    #input()
-    answer += "D" if turn % 2 == 0 else "U"
+    answer.append("D")
 
-print(answer)
+    if turn < len(directions_ij)-1:
+        pass
+        if directions_ij[turn][0] != directions_ij[turn+1][0]:#縦移動
+            answer[-1] = "D" if directions_ij[turn+1][0] - directions_ij[turn][0] > 0 else "U"
+        elif directions_ij[turn][1] != directions_ij[turn+1][1]:#横移動
+            answer[-1] = "R" if directions_ij[turn+1][1] - directions_ij[turn][1] > 0 else "L"
 
+    else:
+        answer[-1] = random.choice("UDLR")
 
-
-print(H)
+print("".join(answer))
