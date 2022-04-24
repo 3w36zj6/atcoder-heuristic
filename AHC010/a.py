@@ -58,7 +58,6 @@ for loop in mini_loops:
 
         ans[30*(x)+y+1] = 1
 
-
         if T[x-1][y+1] == 5:
             ans[30*(x-1)+y+1] = 1
         elif T[x-1][y+1] <= 3:
@@ -74,6 +73,27 @@ for loop in mini_loops:
             ans[30*(x-1)+y+2] = 1
         elif T[x-1][y+2] <= 3:
             ans[30*(x-1)+y+2] = (3 - T[x-1][y+2]+2)%4
+
+    # 左上
+    if T[x][y] == 4 and not T[x-1][y] in (6,7) and not T[x][y-1] in (6,7) and not T[x-1][y-1] in (6,7):
+
+        ans[30*(x)+y] = 1
+
+        if T[x-1][y] == 4:
+            ans[30*(x-1)+y] = 1
+        elif T[x-1][y] <= 3:
+            ans[30*(x-1)+y] = (3 - T[x-1][y]+2)%4
+
+        if T[x][y-1] == 4:
+            ans[30*(x)+y-1] = 1
+        elif T[x][y-1] <= 3:
+            ans[30*(x)+y-1] = (3 - T[x][y-1]+3)%4
+
+
+        if T[x-1][y-1] == 5:
+            ans[30*(x-1)+y-1] = 1
+        elif T[x-1][y-1] <= 3:
+            ans[30*(x-1)+y-1] = (3 - T[x-1][y-1]+3)%4
 
 
 print("".join(map(str,ans)))
